@@ -60,12 +60,17 @@ type Shape4 = Square | Rectangle;
 function calculateArea4(shape: Shape4) {
   if (shape instanceof Rectangle) {
     shape; // type is Rectangle
+    console.log("This is a Rectangle");
     return shape.width * shape.height;
   } else {
     shape; // type is Square
+    console.log("This is a Square");
     return shape.width * shape.width;
   }
 }
+console.log(calculateArea4({ width: 10, height: 20 }));
+console.log(calculateArea4(new Rectangle(10, 20)));
+console.log(calculateArea4(new Square(10)));
 function asNumber(val: number | string): number {
   return val as number; // this won't convert a string to a number since this is only a type assertion
 }
@@ -95,3 +100,12 @@ function setLightSwitch(value: boolean) {
       console.log(`I'm afraid I can't do that.`);
   }
 }
+
+// this two are function declarations, it must be declared just before the function implementation
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a, b) {
+  return a + b;
+}
+const three = add(1, 2); // Type is number
+const twelve = add("1", "2"); // Type is string
