@@ -66,3 +66,32 @@ function calculateArea4(shape: Shape4) {
     return shape.width * shape.width;
   }
 }
+function asNumber(val: number | string): number {
+  return val as number; // this won't convert a string to a number since this is only a type assertion
+}
+
+// to convert the number we should check for its typeof
+function asNumber2(val: number | string): number {
+  // if (typeof val === "number") {
+  //   return val;
+  // } else {
+  //   return parseInt(val);
+  // }
+  // or
+  return typeof val === "string" ? Number(val) : val;
+}
+const turnLightOn = () => console.log("The light is on.");
+const turnLightOff = () => console.log("The light is off.");
+
+function setLightSwitch(value: boolean) {
+  switch (value) {
+    case true:
+      turnLightOn();
+      break;
+    case false:
+      turnLightOff();
+      break;
+    default:
+      console.log(`I'm afraid I can't do that.`);
+  }
+}
